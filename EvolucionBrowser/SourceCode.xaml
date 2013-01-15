@@ -1,0 +1,38 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="EvolucionBrowser.SourceCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" Loaded="PhoneApplicationPage_Loaded_1">
+
+
+    <Grid Width="Auto" Height="Auto">  
+        
+        <TextBlock Height="43" HorizontalAlignment="Left" Margin="10,-1,0,0" Name="textBlock1" Text="Source Code" VerticalAlignment="Top" FontSize="30" Width="179" />
+          
+        <ListBox  Height="Auto" HorizontalAlignment="Left" Name="listBox1" VerticalAlignment="Top" Width="Auto" Margin="0,46,0,0">
+            <TextBlock ScrollViewer.HorizontalScrollBarVisibility="Visible" MaxWidth="468"  HorizontalAlignment="Left" Margin="12,12,0,0" Name="SourceCod" Text="" VerticalAlignment="Top" Width="468" TextWrapping="Wrap" />
+           
+        </ListBox>
+       
+
+    </Grid>
+
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/icons/email.png" Text="Send by email" Click="ApplicationBarIconButton_Click"/>
+          
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

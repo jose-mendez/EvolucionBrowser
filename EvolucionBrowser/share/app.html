@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        test
+        </title>
+     <link rel="stylesheet" href="jquery.mobile.min.css" /> <!--  -->
+        <!--<link rel="stylesheet" href="my.css" />-->
+        <style>
+            /* App custom styles */
+        </style>
+       <script src="jquery.min.js">
+        </script>
+        <script src="jquery.mobile.min.js">
+        </script>
+       <!-- <script src="my.js">-->
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Share
+                </h3>
+            </div>
+            <div data-role="content">
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb;">
+                   <a id="face"> <img src="facebook.jpg" alt="image" width="24%" style="position: absolute; top: 30%; left: 10%; margin-left: -16px; margin-top: -18px" />
+                <span style="float:right;font-size:40px; margin-top:8%; margin-right:5%; font-weight:600" >Facebook</span>
+                </a></div>
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; ">
+                  <a id="tuiter">  <img src="twitter.jpg" width="24%" alt="image" style="position: absolute; top: 30%; left: 10%; margin-left: -16px; margin-top: -18px" />
+                     <span style="float:right;font-size:40px; margin-top:8%; margin-right:25%; font-weight:600" >Twitter</span>
+                </a>
+                </div>
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; ">
+                 <a id="goog">   <img src="googleplus.jpg" width="24%"  alt="image" style="position: absolute; top: 30%; left: 10%; margin-left: -16px; margin-top: -18px" />
+                     <span style="float:right;font-size:40px; margin-top:8%; margin-right:8%; font-weight:600" >Google +</span>
+               </a> </div>
+            </div>
+        </div>
+        <script >
+
+
+            function seturl(url) {
+                    $("#face").attr("href", "http://www.facebook.com/sharer/sharer.php?u=" + url);
+
+                    $("#tuiter").attr("href", " http://twitter.com/intent/tweet?original_referer=" + url + "&text=" + url );
+
+                    $("#goog").attr("href", "https://plus.google.com/u/0/share?url=" + url);
+
+                }
+
+
+
+               // setUrl("asdasdasd");
+        </script>
+    </body>
+</html>
