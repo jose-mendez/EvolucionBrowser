@@ -229,18 +229,18 @@ namespace EvolucionBrowser
             }
         }
 
-
+        private bool _isFullScren = false;
         public void setFullScreem(System.Windows.Controls.TextBox nav, System.Windows.Controls.Button button, WebBrowser browser, System.Windows.Controls.ProgressBar pb)
         {
 
             if (nav.Visibility != System.Windows.Visibility.Collapsed)
             {
-
+                _isFullScren = true;
                 nav.Visibility = System.Windows.Visibility.Collapsed;
                 button.Visibility = System.Windows.Visibility.Collapsed;
 
                 pb.Margin = new Thickness(10, -63, 0, 0);
-                browser.Margin = new Thickness(0, -60, 0, 0);
+                browser.Margin = new Thickness(-15, -60, 3, 3);
 
                 ApplicationBar.IsVisible = false;
 
@@ -250,8 +250,9 @@ namespace EvolucionBrowser
                 nav.Visibility = System.Windows.Visibility.Visible;
                 button.Visibility = System.Windows.Visibility.Visible;
 
-                browser.Margin = new Thickness(0, 70, 0, 60);
+                browser.Margin = new Thickness(-4, 70, 14, 0);
                 ApplicationBar.IsVisible = true;
+                _isFullScren = false;
             }
 
         }
@@ -260,54 +261,54 @@ namespace EvolucionBrowser
 
         public void QuitFullScreen()
         {
-
-            if (webBrowser1.Margin != new Thickness(0, 70, 0, 0))
+            _isFullScren = false;
+            if (webBrowser1.Margin != new Thickness(-4, 70, 14, 0))
             {
 
 
                 textBox1.Visibility = System.Windows.Visibility.Visible;
                 button1.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser1.Margin = new Thickness(0, 70, 0, 0);
+                webBrowser1.Margin = new Thickness(-4, 70, 14, 0);
                 ApplicationBar.IsVisible = true;
                 ProgBar1.Margin = new Thickness(10,11,0,0);
             }
 
 
-            if (webBrowser2.Margin != new Thickness(0, 70, 0, 0))
+            if (webBrowser2.Margin != new Thickness(-4, 70, 14, 0))
             {
 
 
                 textBox2.Visibility = System.Windows.Visibility.Visible;
                 button2.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser2.Margin = new Thickness(0, 70, 0, 0);
+                webBrowser2.Margin = new Thickness(-4, 70, 14, 0);
                 ApplicationBar.IsVisible = true;
                 ProgBar2.Margin = new Thickness(10, 11, 0, 0);
             }
 
 
-            if (webBrowser3.Margin != new Thickness(0, 70, 0, 0))
+            if (webBrowser3.Margin != new Thickness(-4, 70, 14, 0))
             {
 
 
                 textBox3.Visibility = System.Windows.Visibility.Visible;
                 button3.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser3.Margin = new Thickness(0, 70, 0, 0);
+                webBrowser3.Margin = new Thickness(-4, 70, 14, 0);
                 ApplicationBar.IsVisible = true;
                 ProgBar3.Margin = new Thickness(10, 11, 0, 0);
             }
 
 
-            if (webBrowser4.Margin != new Thickness(0, 70, 0, 0))
+            if (webBrowser4.Margin != new Thickness(-4, 70, 14, 0))
             {
 
 
                 textBox4.Visibility = System.Windows.Visibility.Visible;
                 button4.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser4.Margin = new Thickness(0, 70, 0, 0);
+                webBrowser4.Margin = new Thickness(-4, 70, 14, 0);
                 ApplicationBar.IsVisible = true;
                 ProgBar4.Margin = new Thickness(10, 11, 0, 0);
             }
@@ -609,7 +610,7 @@ namespace EvolucionBrowser
                 setFullScreem(textBox4, button4, webBrowser4,ProgBar4);
 
             }
-            MessageBox.Show(Cadenas.Shake);
+          //  MessageBox.Show(Cadenas.Shake);
         }
 
        
@@ -1011,62 +1012,70 @@ namespace EvolucionBrowser
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            if (pivot1.SelectedIndex == 0)
+            if (_isFullScren)
             {
-                if (_navigationStack1.Count() >= 2)
-                {
-                    _navigationStack1.Pop();
-                    webBrowser1.Navigate(_navigationStack1.Pop());
-                    e.Cancel = true;  // This prevents the default functionality of the back button.
-                    return;
-                }
+
+                QuitFullScreen();
             }
-            if (pivot1.SelectedIndex == 1)
+            else
             {
-                if (_navigationStack2.Count() >= 2)
+
+                if (pivot1.SelectedIndex == 0)
                 {
-                    _navigationStack2.Pop();
-                    webBrowser2.Navigate(_navigationStack2.Pop());
-                    e.Cancel = true;  // This prevents the default functionality of the back button.
-                    return;
+                    if (_navigationStack1.Count() >= 2)
+                    {
+                        _navigationStack1.Pop();
+                        webBrowser1.Navigate(_navigationStack1.Pop());
+                        e.Cancel = true;  // This prevents the default functionality of the back button.
+                        return;
+                    }
                 }
-            }
-            if (pivot1.SelectedIndex == 2)
-            {
-                if (_navigationStack3.Count() >= 2)
+                if (pivot1.SelectedIndex == 1)
                 {
-                    _navigationStack3.Pop();
-                    webBrowser3.Navigate(_navigationStack3.Pop());
-                    e.Cancel = true;  // This prevents the default functionality of the back button.
-                    return;
+                    if (_navigationStack2.Count() >= 2)
+                    {
+                        _navigationStack2.Pop();
+                        webBrowser2.Navigate(_navigationStack2.Pop());
+                        e.Cancel = true;  // This prevents the default functionality of the back button.
+                        return;
+                    }
                 }
-            }
-            if (pivot1.SelectedIndex == 3)
-            {
-                if (_navigationStack4.Count() >= 2)
+                if (pivot1.SelectedIndex == 2)
                 {
-                    _navigationStack4.Pop();
-                    webBrowser4.Navigate(_navigationStack4.Pop());
-                    e.Cancel = true;  // This prevents the default functionality of the back button.
-                    return;
+                    if (_navigationStack3.Count() >= 2)
+                    {
+                        _navigationStack3.Pop();
+                        webBrowser3.Navigate(_navigationStack3.Pop());
+                        e.Cancel = true;  // This prevents the default functionality of the back button.
+                        return;
+                    }
                 }
-            }
+                if (pivot1.SelectedIndex == 3)
+                {
+                    if (_navigationStack4.Count() >= 2)
+                    {
+                        _navigationStack4.Pop();
+                        webBrowser4.Navigate(_navigationStack4.Pop());
+                        e.Cancel = true;  // This prevents the default functionality of the back button.
+                        return;
+                    }
+                }
 
 
 
-            MessageBoxResult result = MessageBox.Show(Cadenas.Exit,
-           Cadenas.Warning, MessageBoxButton.OKCancel);
-            e.Cancel = true;
+                MessageBoxResult result = MessageBox.Show(Cadenas.Exit,
+               Cadenas.Warning, MessageBoxButton.OKCancel);
+                e.Cancel = true;
 
-            if (result == MessageBoxResult.OK)
-            {
-                e.Cancel = false;
-                base.OnBackKeyPress(e);
+                if (result == MessageBoxResult.OK)
+                {
+                    e.Cancel = false;
+                    base.OnBackKeyPress(e);
+                }
             }
+
+            e.Cancel = true;  // This prevents the default functionality of the back button.
         }
-
-
-      
 
 
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)

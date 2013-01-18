@@ -75,7 +75,7 @@
                                 <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                             </Button.Background>
                         </Button>
-                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" Margin="0,70,0,0" Name="webBrowser1" VerticalAlignment="Stretch" Navigating="webBrowser1_Navigating" Navigated="webBrowser1_Navigated" NavigationFailed="webBrowser1_NavigationFailed"   LoadCompleted="webBrowser1_LoadCompleted"/>
+                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser1" VerticalAlignment="Stretch" Navigating="webBrowser1_Navigating" Navigated="webBrowser1_Navigated" NavigationFailed="webBrowser1_NavigationFailed"   LoadCompleted="webBrowser1_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466"/>
                     </Grid>
               
             </controls:PivotItem>
@@ -106,7 +106,7 @@
                             <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                         </Button.Background>
                     </Button>
-                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="0,70,0,0" Name="webBrowser2" VerticalAlignment="Stretch" Navigated="webBrowser2_Navigated" Navigating="webBrowser2_Navigating" NavigationFailed="webBrowser2_NavigationFailed" LoadCompleted="webBrowser2_LoadCompleted" />
+                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser2" VerticalAlignment="Stretch" Navigated="webBrowser2_Navigated" Navigating="webBrowser2_Navigating" NavigationFailed="webBrowser2_NavigationFailed" LoadCompleted="webBrowser2_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
 
                 </Grid>
 
@@ -135,7 +135,7 @@
                             <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                         </Button.Background>
                     </Button>
-                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="0,70,0,0" Name="webBrowser3" VerticalAlignment="Stretch" Navigated="webBrowser3_Navigated" Navigating="webBrowser3_Navigating" NavigationFailed="webBrowser3_NavigationFailed"  LoadCompleted="webBrowser3_LoadCompleted"/>
+                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser3" VerticalAlignment="Stretch" Navigated="webBrowser3_Navigated" Navigating="webBrowser3_Navigating" NavigationFailed="webBrowser3_NavigationFailed"  LoadCompleted="webBrowser3_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
 
                 </Grid>
 
@@ -166,7 +166,7 @@
                             <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                         </Button.Background>
                     </Button>
-                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="0,70,0,0" Name="webBrowser4" VerticalAlignment="Stretch" Navigated="webBrowser4_Navigated" Navigating="webBrowser4_Navigating" NavigationFailed="webBrowser4_NavigationFailed" LoadCompleted="webBrowser4_LoadCompleted" />
+                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser4" VerticalAlignment="Stretch" Navigated="webBrowser4_Navigated" Navigating="webBrowser4_Navigating" NavigationFailed="webBrowser4_NavigationFailed" LoadCompleted="webBrowser4_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
 
                 </Grid>
 

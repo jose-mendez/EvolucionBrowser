@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{ec5b7dd5-f0c6-4ef2-8925-b9c72647f93b}" Title="EvolucionBrowser" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="Jose Mendez" Description="Easy and intuitive Web Browser" Publisher="Evolucion_Phone">
+  <App xmlns="" ProductID="{ec5b7dd5-f0c6-4ef2-8925-b9c72647f93b}" Title="EvolucionBrowser" RuntimeType="Silverlight" Version="1.0.0.1" Genre="apps.normal"  Author="Jose Mendez" Description="Easy and intuitive Web Browser" Publisher="Evolucion_Phone">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>
