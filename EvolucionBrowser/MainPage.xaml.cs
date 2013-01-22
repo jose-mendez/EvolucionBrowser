@@ -500,7 +500,7 @@ namespace EvolucionBrowser
         {
             _navigationStack4.Push(e.Uri);
 
-            if (webBrowser4.Source != null && webBrowser4.Source != new Uri("/app.html", UriKind.Relative) && webBrowser4.Source != new Uri("/source.html", UriKind.Relative) && webBrowser3.Source != new Uri("about:blank", UriKind.Absolute))
+            if (webBrowser4.Source != null && webBrowser4.Source != new Uri("/app.html", UriKind.Relative) && webBrowser4.Source != new Uri("/source.html", UriKind.Relative) && webBrowser4.Source != new Uri("about:blank", UriKind.Absolute))
                 textBox4.Text = webBrowser4.Source.ToString();
 
             saveAllinBrowser();
