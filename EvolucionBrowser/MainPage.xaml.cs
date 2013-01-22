@@ -348,7 +348,7 @@ namespace EvolucionBrowser
         {
             _navigationStack1.Push(e.Uri);
 
-            if (webBrowser1.Source != null && webBrowser1.Source != new Uri("/app.html", UriKind.Relative) && webBrowser1.Source != new Uri("/source.html", UriKind.Relative))
+            if (webBrowser1.Source != null && webBrowser1.Source != new Uri("/app.html", UriKind.Relative) && webBrowser1.Source != new Uri("/source.html", UriKind.Relative) && webBrowser1.Source != new Uri("about:blank", UriKind.Absolute))
                 textBox1.Text = webBrowser1.Source.ToString();
 
             saveAllinBrowser();
@@ -399,7 +399,7 @@ namespace EvolucionBrowser
         {
             _navigationStack2.Push(e.Uri);
 
-            if (webBrowser2.Source != null && webBrowser2.Source != new Uri("/app.html", UriKind.Relative) && webBrowser2.Source != new Uri("/source.html", UriKind.Relative))
+            if (webBrowser2.Source != null && webBrowser2.Source != new Uri("/app.html", UriKind.Relative) && webBrowser2.Source != new Uri("/source.html", UriKind.Relative) && webBrowser2.Source != new Uri("about:blank", UriKind.Absolute))
                 textBox2.Text = webBrowser2.Source.ToString();
 
             saveAllinBrowser();
@@ -448,7 +448,7 @@ namespace EvolucionBrowser
 
             _navigationStack3.Push(e.Uri);
 
-            if (webBrowser3.Source != null && webBrowser3.Source != new Uri("/app.html", UriKind.Relative) && webBrowser3.Source != new Uri("/source.html", UriKind.Relative))
+            if (webBrowser3.Source != null && webBrowser3.Source != new Uri("/app.html", UriKind.Relative) && webBrowser3.Source != new Uri("/source.html", UriKind.Relative) && webBrowser3.Source != new Uri("about:blank", UriKind.Absolute))
                 textBox3.Text = webBrowser3.Source.ToString();
 
 
@@ -500,7 +500,7 @@ namespace EvolucionBrowser
         {
             _navigationStack4.Push(e.Uri);
 
-            if (webBrowser4.Source != null && webBrowser4.Source != new Uri("/app.html", UriKind.Relative) && webBrowser4.Source != new Uri("/source.html", UriKind.Relative))
+            if (webBrowser4.Source != null && webBrowser4.Source != new Uri("/app.html", UriKind.Relative) && webBrowser4.Source != new Uri("/source.html", UriKind.Relative) && webBrowser3.Source != new Uri("about:blank", UriKind.Absolute))
                 textBox4.Text = webBrowser4.Source.ToString();
 
             saveAllinBrowser();
