@@ -48,6 +48,26 @@ namespace EvolucionBrowser
             marketplaceSearchTask.Show();
         }
 
+        MarketplaceDetailTask _marketPlaceDetailTask = new MarketplaceDetailTask();
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            _marketPlaceDetailTask.Show();
+        }
+
+        private void PhoneApplicationPage_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            if ((Application.Current as App).IsTrial)
+            {
+                buy.Visibility = Visibility.Visible;
+                buy.Content = Cadenas.BuyApp;
+            }
+            else 
+            {
+                buy.Visibility = Visibility.Collapsed;
+            }
+        }
+
      
     }
 }

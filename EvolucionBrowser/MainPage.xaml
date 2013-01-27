@@ -1,5 +1,4 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="EvolucionBrowser.MainPage"
+﻿<phone:PhoneApplicationPage
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
    
@@ -9,52 +8,77 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:System;assembly=System" xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI" 
+    x:Class="EvolucionBrowser.MainPage"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded" OrientationChanged="PhoneApplicationPage_OrientationChanged" xmlns:my="clr-namespace:System;assembly=System" Unloaded="PhoneApplicationPage_Unloaded">
-    
-   
-   
-    <Grid Height="Auto" Name="grid1" Width="Auto">
-
-        <Grid Height="Auto" Name="wraperEplorers" Width="Auto">
-            <Button Height="72" HorizontalAlignment="Left" Margin="247,0,0,0" Name="Fullscreen" VerticalAlignment="Top" Width="83"  BorderThickness="0" Click="Fullscreen_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/EvolucionBrowser;component/Images/fullscreen.jpg" Stretch="Uniform" />
-            </Button.Background>
-        </Button>
-
-        
-        <Button  Height="72" HorizontalAlignment="Left" Margin="317,0,0,0" Name="btBack1" VerticalAlignment="Top" Width="83" Click="btBack1_Click" BorderThickness="0" >
-            <Button.Background>
-                <ImageBrush ImageSource="/EvolucionBrowser;component/Images/back.jpg" Stretch="Uniform" />
-            </Button.Background>
-        </Button>
-        
-        
-        <Button  Height="72" HorizontalAlignment="Left" Margin="381,0,0,0" Name="btNext1" VerticalAlignment="Top" Width="83"  Click="btNext1_Click" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/EvolucionBrowser;component/Images/forward.jpg" Stretch="Uniform" />
-            </Button.Background>
-        </Button>
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded" OrientationChanged="PhoneApplicationPage_OrientationChanged" Unloaded="PhoneApplicationPage_Unloaded">
 
 
-            <TextBlock Name="tap" HorizontalAlignment="Left" VerticalAlignment="Top"  Text="{Binding Resources.Tap, Source={StaticResource Cadenas}}" Margin="151,19,0,0"  />
 
-     
-        
 
-        <controls:Pivot Name="pivot1" Title="eBrowser" Height="Auto"  Width="Auto" Margin="0,0,-20,1" Background="{x:Null}" SelectionChanged="pivot1_SelectionChanged">
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1.0" >
 
-            <controls:PivotItem >
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem  Text="Buy the App" IsEnabled="False" Click="ApplicationBarMenuItem_Click_6"  />
+                <shell:ApplicationBarMenuItem Text="Set user agent" Click="ApplicationBarMenuItem_Click" />
+                <shell:ApplicationBarMenuItem Text="Save Imgs" Click="ApplicationBarMenuItem_Click_1" />
+                <shell:ApplicationBarMenuItem Text="See Cookies" Click="ApplicationBarMenuItem_Click_4" />
+                <shell:ApplicationBarMenuItem Text="Source Code" Click="ApplicationBarMenuItem_Click_3" />
+                <shell:ApplicationBarMenuItem Text="Settings" Click="ApplicationBarMenuItem_Click_5" />
+                <shell:ApplicationBarMenuItem Text="About" Click="ApplicationBarMenuItem_Click_2" />
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton IconUri="/icons/history.png" Text="h" Click="ApplicationBarIconButton_Click" />
+            <shell:ApplicationBarIconButton IconUri="/icons/favs.addto.png" Text="af" Click="ApplicationBarIconButton_Click_1" />
+            <shell:ApplicationBarIconButton IconUri="/icons/favs.png" Text="f" Click="ApplicationBarIconButton_Click_2" />
+            <shell:ApplicationBarIconButton IconUri="/icons/share.png" Text="s" Click="ApplicationBarIconButton_Click_3" />
 
-                <Grid Background="Transparent">
-                  
-                    
-                    <ProgressBar x:Name="ProgBar1"
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
+
+    <Grid Height="Auto" x:Name="grid1" Width="Auto">
+
+        <Grid Height="Auto" x:Name="wraperEplorers" Width="Auto">
+            <Button Height="72" HorizontalAlignment="Left" Margin="247,0,0,0" x:Name="Fullscreen" VerticalAlignment="Top" Width="83"  BorderThickness="0" Click="Fullscreen_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/EvolucionBrowser;component/Images/fullscreen.jpg" Stretch="Uniform" />
+                </Button.Background>
+            </Button>
+
+
+            <Button  Height="72" HorizontalAlignment="Left" Margin="317,0,0,0" x:Name="btBack1" VerticalAlignment="Top" Width="83" Click="btBack1_Click" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/EvolucionBrowser;component/Images/back.jpg" Stretch="Uniform" />
+                </Button.Background>
+            </Button>
+
+
+            <Button  Height="72" HorizontalAlignment="Left" Margin="381,0,0,0" x:Name="btNext1" VerticalAlignment="Top" Width="83"  Click="btNext1_Click" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/EvolucionBrowser;component/Images/forward.jpg" Stretch="Uniform" />
+                </Button.Background>
+            </Button>
+
+
+            <TextBlock x:Name="tap" HorizontalAlignment="Left" VerticalAlignment="Top"  Text="{Binding Resources.Tap, Source={StaticResource Cadenas}}" Margin="151,19,0,0"  />
+
+
+
+
+            <controls:Pivot x:Name="pivot1" Title="eBrowser" Height="Auto"  Width="Auto" Margin="0,0,-20,1" Background="{x:Null}" SelectionChanged="pivot1_SelectionChanged">
+
+                <controls:PivotItem >
+
+                    <Grid Background="Transparent">
+
+
+                        <ProgressBar x:Name="ProgBar1"
                     Foreground="Orange"
                     Visibility="Collapsed"
                     IsIndeterminate="True"
@@ -64,18 +88,18 @@
                     VerticalAlignment="Top"
                      Width="460" />
 
-                    <!----><TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" Name="textBox1" Text="http://www.google.com" VerticalAlignment="Top" Width="Auto" MinWidth="443" BorderBrush="#BFFFFFFF" KeyDown="textBox1_KeyDown" GotFocus="textBox1_GotFocus">
-                    </TextBox>
+                        <!----><TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" x:Name="textBox1" Text="http://www.google.com" VerticalAlignment="Top" Width="Auto" MinWidth="443" BorderBrush="#BFFFFFFF" KeyDown="textBox1_KeyDown" GotFocus="textBox1_GotFocus"/>
 
                     
                        
 
-                        <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-8,0" Name="button1" VerticalAlignment="Top" Width="74" Click="button1_Click" BorderThickness="0">
+                        <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-8,0" x:Name="button1" VerticalAlignment="Top" Width="74" Click="button1_Click" BorderThickness="0">
                             <Button.Background>
                                 <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                             </Button.Background>
                         </Button>
-                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser1" VerticalAlignment="Stretch" Navigating="webBrowser1_Navigating" Navigated="webBrowser1_Navigated" NavigationFailed="webBrowser1_NavigationFailed"   LoadCompleted="webBrowser1_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466"/>
+                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" Margin="-4,70,14,0" x:Name="webBrowser1" VerticalAlignment="Stretch" Navigating="webBrowser1_Navigating" Navigated="webBrowser1_Navigated" NavigationFailed="webBrowser1_NavigationFailed"   LoadCompleted="webBrowser1_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466"/>
+                	<UI:AdControl  Name="ads1" ApplicationId="5fcf2459-283f-4b99-b32d-ce419bf26022" AdUnitId="114493" HorizontalAlignment="Left" Height="80" Margin="-12,550,0,0" VerticalAlignment="Bottom" Width="480" IsAutoRefreshEnabled="False"/>
                     </Grid>
               
             </controls:PivotItem>
@@ -96,28 +120,29 @@
                      Width="460" />
 
                     <!---->
-                    <TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" Name="textBox2" Text="http://www.yahoo.com" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown" GotFocus="textBox2_GotFocus" />
+                        <TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" x:Name="textBox2" Text="http://www.yahoo.com" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown" GotFocus="textBox2_GotFocus" />
 
 
-                 
-
-                    <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-6,0" Name="button2" VerticalAlignment="Top" Width="71" Click="button2_Click" BorderThickness="0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
-                        </Button.Background>
-                    </Button>
-                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser2" VerticalAlignment="Stretch" Navigated="webBrowser2_Navigated" Navigating="webBrowser2_Navigating" NavigationFailed="webBrowser2_NavigationFailed" LoadCompleted="webBrowser2_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
-
-                </Grid>
-
-            </controls:PivotItem>
 
 
-            <controls:PivotItem>
+                        <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-6,0" x:Name="button2" VerticalAlignment="Top" Width="71" Click="button2_Click" BorderThickness="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
+                            </Button.Background>
+                        </Button>
+                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" x:Name="webBrowser2" VerticalAlignment="Stretch" Navigated="webBrowser2_Navigated" Navigating="webBrowser2_Navigating" NavigationFailed="webBrowser2_NavigationFailed" LoadCompleted="webBrowser2_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
+                        <UI:AdControl  Name="ads2" ApplicationId="5fcf2459-283f-4b99-b32d-ce419bf26022" AdUnitId="114497" HorizontalAlignment="Left" Height="80" Margin="-12,550,0,0" VerticalAlignment="Bottom" Width="480"/>
 
-                <Grid>
+                    </Grid>
 
-                    <ProgressBar x:Name="ProgBar3"
+                </controls:PivotItem>
+
+
+                <controls:PivotItem>
+
+                    <Grid>
+
+                        <ProgressBar x:Name="ProgBar3"
                     Foreground="Orange"
                     Visibility="Collapsed"
                     IsIndeterminate="True"
@@ -127,15 +152,16 @@
                     VerticalAlignment="Top"
                      Width="460" />
 
-                    <!----><TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" Name="textBox3" Text="http://www.xgeeker.blogspot.com/" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown"  GotFocus="textBox3_GotFocus"/>
+                        <!----><TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" x:Name="textBox3" Text="http://www.xgeeker.blogspot.com/" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown"  GotFocus="textBox3_GotFocus"/>
 
                     
-                    <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-7,0" Name="button3" VerticalAlignment="Top" Width="74" Click="button3_Click" BorderThickness="0">
+                    <Button  Height="70" HorizontalAlignment="Right" Margin="0,4,-7,0" x:Name="button3" VerticalAlignment="Top" Width="74" Click="button3_Click" BorderThickness="0">
                         <Button.Background>
                             <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
                         </Button.Background>
                     </Button>
-                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser3" VerticalAlignment="Stretch" Navigated="webBrowser3_Navigated" Navigating="webBrowser3_Navigating" NavigationFailed="webBrowser3_NavigationFailed"  LoadCompleted="webBrowser3_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
+                    <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" x:Name="webBrowser3" VerticalAlignment="Stretch" Navigated="webBrowser3_Navigated" Navigating="webBrowser3_Navigating" NavigationFailed="webBrowser3_NavigationFailed"  LoadCompleted="webBrowser3_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
+                    <UI:AdControl  Name="ads3" ApplicationId="5fcf2459-283f-4b99-b32d-ce419bf26022" AdUnitId="114498" HorizontalAlignment="Left" Height="80" Margin="-12,550,0,0" VerticalAlignment="Bottom" Width="480"/>
 
                 </Grid>
 
@@ -156,50 +182,32 @@
                      Width="460" />
                    
                     <!---->
-                    <TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" Name="textBox4" Text="http://www.gmail.com" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown" GotFocus="textBox4_GotFocus" />
+                        <TextBox Height="70" HorizontalAlignment="Left" Margin="-10,4,0,0" x:Name="textBox4" Text="http://www.gmail.com" VerticalAlignment="Top" Width="443" KeyDown="textBox1_KeyDown" GotFocus="textBox4_GotFocus" />
 
 
-                    
 
-                    <Button Height="70" HorizontalAlignment="Right" Margin="0,4,-6,0" Name="button4" VerticalAlignment="Top" Width="74" Click="button4_Click" BorderThickness="0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
-                        </Button.Background>
-                    </Button>
-                        <phone:WebBrowser IsScriptEnabled="True" Height="Auto" HorizontalAlignment="Stretch" Margin="-4,70,14,0" Name="webBrowser4" VerticalAlignment="Stretch" Navigated="webBrowser4_Navigated" Navigating="webBrowser4_Navigating" NavigationFailed="webBrowser4_NavigationFailed" LoadCompleted="webBrowser4_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" />
 
-                </Grid>
+                        <Button Height="70" HorizontalAlignment="Right" Margin="0,4,-6,0" x:Name="button4" VerticalAlignment="Top" Width="74" Click="button4_Click" BorderThickness="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/EvolucionBrowser;component/Images/reload.jpg" Stretch="Uniform" />
+                            </Button.Background>
+                        </Button>
+                        <phone:WebBrowser IsScriptEnabled="True" HorizontalAlignment="Stretch" Margin="-4,70,14,0" x:Name="webBrowser4" VerticalAlignment="Stretch" Navigated="webBrowser4_Navigated" Navigating="webBrowser4_Navigating" NavigationFailed="webBrowser4_NavigationFailed" LoadCompleted="webBrowser4_LoadCompleted" BorderThickness="1" BorderBrush="Black" Width="466" Height="Auto" />
+                        <UI:AdControl Name="ads4" ApplicationId="5fcf2459-283f-4b99-b32d-ce419bf26022" AdUnitId="114499" HorizontalAlignment="Left" Height="80" Margin="-12,550,0,0" VerticalAlignment="Bottom" Width="480"/>
 
-            </controls:PivotItem>
+                    </Grid>
 
-        </controls:Pivot>
+                </controls:PivotItem>
 
-</Grid>
+            </controls:Pivot>
+
+        </Grid>
 
 
 
     </Grid>
 
-  
-    
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1.0" >
-            <shell:ApplicationBarIconButton IconUri="/icons/history.png" Text="h" Click="ApplicationBarIconButton_Click" />
-            <shell:ApplicationBarIconButton IconUri="/icons/favs.addto.png" Text="af" Click="ApplicationBarIconButton_Click_1" />
-            <shell:ApplicationBarIconButton IconUri="/icons/favs.png" Text="f" Click="ApplicationBarIconButton_Click_2" />
-            <shell:ApplicationBarIconButton IconUri="/icons/share.png" Text="s" Click="ApplicationBarIconButton_Click_3" />
-
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Set user agent" Click="ApplicationBarMenuItem_Click" />
-                <shell:ApplicationBarMenuItem Text="Save Imgs" Click="ApplicationBarMenuItem_Click_1" />
-                <shell:ApplicationBarMenuItem Text="See Cookies" Click="ApplicationBarMenuItem_Click_4" />
-                <shell:ApplicationBarMenuItem Text="Source Code" Click="ApplicationBarMenuItem_Click_3" />
-                <shell:ApplicationBarMenuItem Text="Settings" Click="ApplicationBarMenuItem_Click_5" />
-                <shell:ApplicationBarMenuItem Text="About" Click="ApplicationBarMenuItem_Click_2" />
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
 
 
 </phone:PhoneApplicationPage>

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.IO.IsolatedStorage;
 using System.Text.RegularExpressions;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 
 
 namespace EvolucionBrowser
@@ -46,8 +47,44 @@ namespace EvolucionBrowser
                 }
                 catch { return null; }
             }
-        } 
-       
+        }
+
+        MarketplaceDetailTask _marketPlaceDetailTask = new MarketplaceDetailTask();
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if ((Application.Current as App).IsTrial)
+            { 
+                ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).IsEnabled = true;
+                if (MessageBox.Show(Cadenas.BuyMsg, Cadenas.BuyCaption,
+                 MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    _marketPlaceDetailTask.Show();
+                }
+                webBrowser1.Margin = new Thickness(-4, 70, 14, 80);
+                webBrowser2.Margin = new Thickness(-4, 70, 14, 80);
+                webBrowser3.Margin = new Thickness(-4, 70, 14, 80);
+                webBrowser4.Margin = new Thickness(-4, 70, 14, 80);
+            }
+            else 
+            {
+                ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).IsEnabled = false;
+                webBrowser1.Margin = new Thickness(-4, 70, 14, 0);
+                webBrowser2.Margin = new Thickness(-4, 70, 14, 0);
+                webBrowser3.Margin = new Thickness(-4, 70, 14, 0);
+                webBrowser4.Margin = new Thickness(-4, 70, 14, 0);
+
+                ads1.Visibility = System.Windows.Visibility.Collapsed;
+                ads2.Visibility = System.Windows.Visibility.Collapsed;
+                ads3.Visibility = System.Windows.Visibility.Collapsed;
+                ads4.Visibility = System.Windows.Visibility.Collapsed;
+            }
+
+           
+
+        }
 
         private Accelerometer accelerometer = new Accelerometer();
         private AccelerometerSensorWithShakeDetection _shakeSensor = new AccelerometerSensorWithShakeDetection();
@@ -91,21 +128,24 @@ namespace EvolucionBrowser
             button2.Text = Cadenas.fav;
             button3.Text = Cadenas.share;
 
-           var item0 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[0];
-           var item1 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[1]; 
+            var item0 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[0];
+            var item1 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[1];
             var item2 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[2]; 
-            var item3 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[3];
+            var item3 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[3]; 
             var item4 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[4];
             var item5 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[5];
+            var item6 = (ApplicationBarMenuItem)ApplicationBar.MenuItems[6];
 
-            item0.Text = Cadenas.setUA;
-            item1.Text = Cadenas.saveImg;
-            item2.Text =Cadenas.cookies;
-            item3.Text = Cadenas.scode;
-            item4.Text = Cadenas.setting;
-            item5.Text = Cadenas.about;
+            
+            item0.Text = Cadenas.BuyApp; 
+            item1.Text = Cadenas.setUA;
+            item2.Text = Cadenas.saveImg;
+            item3.Text =Cadenas.cookies;
+            item4.Text = Cadenas.scode;
+            item5.Text = Cadenas.setting;
+            item6.Text = Cadenas.about;
 
-
+            
 
 
         }
@@ -230,7 +270,7 @@ namespace EvolucionBrowser
         }
 
         private bool _isFullScren = false;
-        public void setFullScreem(System.Windows.Controls.TextBox nav, System.Windows.Controls.Button button, WebBrowser browser, System.Windows.Controls.ProgressBar pb)
+        public void setFullScreen(System.Windows.Controls.TextBox nav, System.Windows.Controls.Button button, WebBrowser browser, System.Windows.Controls.ProgressBar pb)
         {
 
             if (nav.Visibility != System.Windows.Visibility.Collapsed)
@@ -240,20 +280,21 @@ namespace EvolucionBrowser
                 button.Visibility = System.Windows.Visibility.Collapsed;
 
                 pb.Margin = new Thickness(10, -63, 0, 0);
-                browser.Margin = new Thickness(-15, -60, 3, 3);
 
+                if ((Application.Current as App).IsTrial)
+                {
+                    browser.Margin = new Thickness(-15, -60, 3, 80);
+                }
+                else 
+                {
+                    browser.Margin = new Thickness(-15, -60, 3, 3);
+                }
+                
+                browser.Height = double.NaN;
                 ApplicationBar.IsVisible = false;
 
             }
-            else
-            {
-                nav.Visibility = System.Windows.Visibility.Visible;
-                button.Visibility = System.Windows.Visibility.Visible;
-
-                browser.Margin = new Thickness(-4, 70, 14, 0);
-                ApplicationBar.IsVisible = true;
-                _isFullScren = false;
-            }
+            
 
         }
 
@@ -262,53 +303,90 @@ namespace EvolucionBrowser
         public void QuitFullScreen()
         {
             _isFullScren = false;
-            if (webBrowser1.Margin != new Thickness(-4, 70, 14, 0))
+            if (textBox1.Visibility == System.Windows.Visibility.Collapsed)
             {
 
 
                 textBox1.Visibility = System.Windows.Visibility.Visible;
                 button1.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser1.Margin = new Thickness(-4, 70, 14, 0);
+
+                if ((Application.Current as App).IsTrial)
+                {
+                    webBrowser1.Margin = new Thickness(-4, 70, 14, 80);
+                }
+                else 
+                {
+                    webBrowser1.Margin = new Thickness(-4, 70, 14, 0);
+                }
+
+                 webBrowser1.Height = double.NaN;
                 ApplicationBar.IsVisible = true;
                 ProgBar1.Margin = new Thickness(10,11,0,0);
             }
 
 
-            if (webBrowser2.Margin != new Thickness(-4, 70, 14, 0))
+            if (textBox2.Visibility == System.Windows.Visibility.Collapsed)
             {
 
 
                 textBox2.Visibility = System.Windows.Visibility.Visible;
                 button2.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser2.Margin = new Thickness(-4, 70, 14, 0);
+                if ((Application.Current as App).IsTrial)
+                {
+                    webBrowser2.Margin = new Thickness(-4, 70, 14, 80);
+                }
+                else
+                {
+                    webBrowser2.Margin = new Thickness(-4, 70, 14, 0);
+                }
+
+                webBrowser2.Height = double.NaN;
                 ApplicationBar.IsVisible = true;
                 ProgBar2.Margin = new Thickness(10, 11, 0, 0);
             }
 
 
-            if (webBrowser3.Margin != new Thickness(-4, 70, 14, 0))
+            if (textBox3.Visibility == System.Windows.Visibility.Collapsed)
             {
 
 
                 textBox3.Visibility = System.Windows.Visibility.Visible;
                 button3.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser3.Margin = new Thickness(-4, 70, 14, 0);
+                if ((Application.Current as App).IsTrial)
+                {
+                    webBrowser3.Margin = new Thickness(-4, 70, 14, 80);
+                }
+                else
+                {
+                    webBrowser3.Margin = new Thickness(-4, 70, 14, 0);
+                }
+
+                webBrowser3.Height = double.NaN;
                 ApplicationBar.IsVisible = true;
                 ProgBar3.Margin = new Thickness(10, 11, 0, 0);
             }
 
 
-            if (webBrowser4.Margin != new Thickness(-4, 70, 14, 0))
+            if (textBox4.Visibility == System.Windows.Visibility.Collapsed)
             {
 
 
                 textBox4.Visibility = System.Windows.Visibility.Visible;
                 button4.Visibility = System.Windows.Visibility.Visible;
 
-                webBrowser4.Margin = new Thickness(-4, 70, 14, 0);
+                if ((Application.Current as App).IsTrial)
+                {
+                    webBrowser4.Margin = new Thickness(-4, 70, 14, 80);
+                }
+                else
+                {
+                    webBrowser4.Margin = new Thickness(-4, 70, 14, 0);
+                }
+
+                webBrowser4.Height = double.NaN;
                 ApplicationBar.IsVisible = true;
                 ProgBar4.Margin = new Thickness(10, 11, 0, 0);
             }
@@ -592,22 +670,22 @@ namespace EvolucionBrowser
         {
             if (pivot1.SelectedIndex == 0)
             {
-                setFullScreem(textBox1, button1, webBrowser1,ProgBar1);
+                setFullScreen(textBox1, button1, webBrowser1,ProgBar1);
 
             }
             else if (pivot1.SelectedIndex == 1)
             {
-                setFullScreem(textBox2, button2, webBrowser2,ProgBar2);
+                setFullScreen(textBox2, button2, webBrowser2,ProgBar2);
 
             }
             else if (pivot1.SelectedIndex == 2)
             {
-                setFullScreem(textBox3, button3, webBrowser3,ProgBar3);
+                setFullScreen(textBox3, button3, webBrowser3,ProgBar3);
 
             }
             else if (pivot1.SelectedIndex == 3)
             {
-                setFullScreem(textBox4, button4, webBrowser4,ProgBar4);
+                setFullScreen(textBox4, button4, webBrowser4,ProgBar4);
 
             }
           //  MessageBox.Show(Cadenas.Shake);
@@ -810,137 +888,147 @@ namespace EvolucionBrowser
          
         private void ApplicationBarMenuItem_Click_3(object sender, EventArgs e)
         {
-            //version gratis
-            //if(pivot1.SelectedIndex==0)
-            //((System.Windows.Controls.Frame)this.Parent).DataContext = webBrowser1.SaveToString();
-
-            //if (pivot1.SelectedIndex == 1)
-            //    ((System.Windows.Controls.Frame)this.Parent).DataContext = webBrowser2.SaveToString();
-
-            //if (pivot1.SelectedIndex == 2)
-            //    ((System.Windows.Controls.Frame)this.Parent).DataContext = webBrowser3.SaveToString();
-
-            //if (pivot1.SelectedIndex == 3)
-            //    ((System.Windows.Controls.Frame)this.Parent).DataContext = webBrowser4.SaveToString();
-
-            //NavigationService.Navigate(new Uri("/sourcecode.xaml", UriKind.RelativeOrAbsolute));
-
-            if (pivot1.SelectedIndex == 0)
+            if ((Application.Current as App).IsTrial)
             {
-                scode = webBrowser1.SaveToString();
-               // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
-                webBrowser1.Navigate(new Uri("/source.html", UriKind.Relative));
+                if (MessageBox.Show(Cadenas.BuyMsg, Cadenas.BuyCaption,
+                MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    _marketPlaceDetailTask.Show();
+                }
             }
-
-            if (pivot1.SelectedIndex == 1)
+            else
             {
-                scode = webBrowser2.SaveToString();
-                //scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
-                webBrowser2.Navigate(new Uri("/source.html", UriKind.Relative));
+                if (pivot1.SelectedIndex == 0)
+                {
+                    scode = webBrowser1.SaveToString();
+                    // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
+                    webBrowser1.Navigate(new Uri("/source.html", UriKind.Relative));
+                }
+
+                if (pivot1.SelectedIndex == 1)
+                {
+                    scode = webBrowser2.SaveToString();
+                    //scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
+                    webBrowser2.Navigate(new Uri("/source.html", UriKind.Relative));
+                }
+
+                if (pivot1.SelectedIndex == 2)
+                {
+                    scode = webBrowser3.SaveToString();
+                    // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
+                    webBrowser3.Navigate(new Uri("/source.html", UriKind.Relative));
+                }
+
+                if (pivot1.SelectedIndex == 3)
+                {
+                    scode = webBrowser4.SaveToString();
+                    // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
+                    webBrowser4.Navigate(new Uri("/source.html", UriKind.Relative));
+                }
+
+                scode = scode.Replace("<html", "< html");
+                scode = scode.Replace("<Html", "< html");
+                scode = scode.Replace("<HTML", "< html");
+
+                scode = scode.Replace("<head", "< head");
+                scode = scode.Replace("<Head", "< head");
+                scode = scode.Replace("<HEAD", "< head");
+
+                scode = scode.Replace("<body", "< body");
+                scode = scode.Replace("<Body", "< body");
+                scode = scode.Replace("<BODY", "< body");
+
+                scode = scode.Replace("<pre", "< pre");
+                scode = scode.Replace("<Pre", "< pre");
+                scode = scode.Replace("<PRE", "< pre");
+
+                scode = scode.Replace("</pre", "< / pre");
+                scode = scode.Replace("</Pre", "< / pre");
+                scode = scode.Replace("</PRE", "< / pre");
+
+
+
+
+                scode = scode.Replace("<script", "< script");
+                scode = scode.Replace("<Script", "< script");
+                scode = scode.Replace("<SCRIPT", "< script");
+
+                scode = scode.Replace("</script", "< / script");
+                scode = scode.Replace("</Script", "< / script");
+                scode = scode.Replace("</SCRIPT", "< / script");
+
+
+
+                scode = scode.Replace("</html", "< / html");
+                scode = scode.Replace("</Html", "< / html");
+                scode = scode.Replace("</HTML", "< / html");
+
+
+                scode = scode.Replace("</head", "< / head");
+                scode = scode.Replace("</Head", "< / head");
+                scode = scode.Replace("</HEAD", "< / head");
+
+                scode = scode.Replace("</body", "< / body");
+                scode = scode.Replace("</Body", "< / body");
+                scode = scode.Replace("</BODY", "< / body");
             }
-
-            if (pivot1.SelectedIndex == 2)
-            {
-                scode = webBrowser3.SaveToString();
-               // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
-                webBrowser3.Navigate(new Uri("/source.html", UriKind.Relative));
-            }
-
-            if (pivot1.SelectedIndex == 3)
-            {
-                scode = webBrowser4.SaveToString();
-               // scode = (scode.Length < 120000) ? scode : scode.Substring(0, 120000);
-                webBrowser4.Navigate(new Uri("/source.html", UriKind.Relative));
-            }
-
-            scode = scode.Replace("<html", "< html");
-            scode = scode.Replace("<Html", "< html");
-            scode = scode.Replace("<HTML", "< html");
-
-            scode = scode.Replace("<head", "< head");
-            scode = scode.Replace("<Head", "< head");
-            scode = scode.Replace("<HEAD", "< head");
-
-            scode = scode.Replace("<body", "< body");
-            scode = scode.Replace("<Body", "< body");
-            scode = scode.Replace("<BODY", "< body");
-
-            scode = scode.Replace("<pre", "< pre");
-            scode = scode.Replace("<Pre", "< pre");
-            scode = scode.Replace("<PRE", "< pre");
-
-            scode = scode.Replace("</pre", "< / pre");
-            scode = scode.Replace("</Pre", "< / pre");
-            scode = scode.Replace("</PRE", "< / pre");
-
-
-
-
-            scode = scode.Replace("<script", "< script");
-            scode = scode.Replace("<Script", "< script");
-            scode = scode.Replace("<SCRIPT", "< script");
-
-            scode = scode.Replace("</script", "< / script");
-            scode = scode.Replace("</Script", "< / script");
-            scode = scode.Replace("</SCRIPT", "< / script");
-
-
-
-            scode = scode.Replace("</html", "< / html");
-            scode = scode.Replace("</Html", "< / html");
-            scode = scode.Replace("</HTML", "< / html");
-
-
-            scode = scode.Replace("</head", "< / head");
-            scode = scode.Replace("</Head", "< / head");
-            scode = scode.Replace("</HEAD", "< / head");
-
-            scode = scode.Replace("</body", "< / body");
-            scode = scode.Replace("</Body", "< / body");
-            scode = scode.Replace("</BODY", "< / body");
         }
         
         private void ApplicationBarMenuItem_Click_4(object sender, EventArgs e)
         {
-            try
+
+            if ((Application.Current as App).IsTrial)
             {
-                var s= new CookieCollection();
-                
-                if (pivot1.SelectedIndex == 0)
+                if (MessageBox.Show(Cadenas.BuyMsg, Cadenas.BuyCaption,
+                MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    s = webBrowser1.GetCookies();
-
-                    ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
-                    NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox1.Text, UriKind.RelativeOrAbsolute));
+                    _marketPlaceDetailTask.Show();
                 }
-                if (pivot1.SelectedIndex == 1)
-                {
-                    s = webBrowser2.GetCookies();
-
-                    ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
-                    NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox2.Text, UriKind.RelativeOrAbsolute));
-                }
-                if (pivot1.SelectedIndex == 2)
-                {
-                    s = webBrowser3.GetCookies();
-
-                    ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
-                    NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox3.Text, UriKind.RelativeOrAbsolute));
-                }
-                if (pivot1.SelectedIndex == 3)
-                {
-                    s = webBrowser4.GetCookies();
-
-                    ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
-                    NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox4.Text, UriKind.RelativeOrAbsolute));
-                }
-
-
             }
+            else
+            {
 
-            catch{
+                try
+                {
+                    var s = new CookieCollection();
 
-            MessageBox.Show("No cookie to show");
+                    if (pivot1.SelectedIndex == 0)
+                    {
+                        s = webBrowser1.GetCookies();
+
+                        ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
+                        NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox1.Text, UriKind.RelativeOrAbsolute));
+                    }
+                    if (pivot1.SelectedIndex == 1)
+                    {
+                        s = webBrowser2.GetCookies();
+
+                        ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
+                        NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox2.Text, UriKind.RelativeOrAbsolute));
+                    }
+                    if (pivot1.SelectedIndex == 2)
+                    {
+                        s = webBrowser3.GetCookies();
+
+                        ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
+                        NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox3.Text, UriKind.RelativeOrAbsolute));
+                    }
+                    if (pivot1.SelectedIndex == 3)
+                    {
+                        s = webBrowser4.GetCookies();
+
+                        ((System.Windows.Controls.Frame)this.Parent).DataContext = s;
+                        NavigationService.Navigate(new Uri("/seeCookie.xaml?url=" + textBox4.Text, UriKind.RelativeOrAbsolute));
+                    }
+
+
+                }
+
+                catch
+                {
+
+                    MessageBox.Show("No cookie to show");
+                }
             }
         }
         #endregion
@@ -1299,6 +1387,11 @@ namespace EvolucionBrowser
                             webBrowser4.Navigate(new Uri(seng + toSearch, UriKind.Absolute));
                         });
                     }
+        }
+
+        private void ApplicationBarMenuItem_Click_6(object sender, EventArgs e)
+        {
+            _marketPlaceDetailTask.Show();
         }
         
 

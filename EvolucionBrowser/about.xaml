@@ -11,7 +11,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI">
+    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI" Loaded="PhoneApplicationPage_Loaded_1">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -33,7 +33,7 @@
             <TextBlock  Height="Auto" HorizontalAlignment="Left" Margin="12,6,0,0" 
             Name="ver" Text="{Binding Resources.Version, Source={StaticResource Cadenas}}" VerticalAlignment="Top" />
             <TextBlock  Height="Auto" HorizontalAlignment="Left" Margin="95,6,0,0" 
-            Name="verNo" Text=" 1.0.0" VerticalAlignment="Top" />
+            Name="verNo" Text=" 1.0.0.3" VerticalAlignment="Top" />
             
             
             <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="12,37,0,0" 
@@ -50,6 +50,7 @@
 
             <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="24,332,0,0" Name="feed" Text="{Binding Resources.Feedback, Source={StaticResource Cadenas}}" VerticalAlignment="Top"  FontSize="40" Tap="hyperlinkButton1_Click" />
             <TextBlock Height="30" HorizontalAlignment="Left" Margin="27,385,0,0" Name="feed1" Text="{Binding Resources.Feedback1, Source={StaticResource Cadenas}}" VerticalAlignment="Top" />
+            <Button Name="buy" Content="buy" HorizontalAlignment="Left" Margin="12,439,0,0" VerticalAlignment="Top" Width="273" Click="Button_Click_1"/>
         </Grid>
     </Grid>
  

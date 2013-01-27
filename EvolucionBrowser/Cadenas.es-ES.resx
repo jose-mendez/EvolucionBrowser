@@ -270,4 +270,13 @@
   <data name="Shake" xml:space="preserve">
     <value>Sacude el telefono para restaurar...</value>
   </data>
+  <data name="BuyApp" xml:space="preserve">
+    <value>Comprar la Aplicación</value>
+  </data>
+  <data name="BuyCaption" xml:space="preserve">
+    <value>Compra la aplicación</value>
+  </data>
+  <data name="BuyMsg" xml:space="preserve">
+    <value>Compra la aplicación para optener una experiencia completa y sin anuncios . Decea comprar la aplicación?</value>
+  </data>
 </root>
