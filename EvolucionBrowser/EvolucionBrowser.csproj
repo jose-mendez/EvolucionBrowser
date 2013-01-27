@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>es-ES;en-US
+    <SupportedCultures>es-ES;en-US;fr-FR
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
@@ -230,6 +230,7 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Cadenas.fr-FR.resx" />
     <EmbeddedResource Include="Cadenas.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Cadenas.Designer.cs</LastGenOutput>
