@@ -278,4 +278,7 @@
   <data name="BuyApp" xml:space="preserve">
     <value>Acheter cette app</value>
   </data>
+  <data name="NoEmpty" xml:space="preserve">
+    <value>Le nom ne peut pas être zone de texte vide</value>
+  </data>
 </root>

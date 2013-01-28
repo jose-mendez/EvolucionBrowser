@@ -66,7 +66,14 @@ namespace EvolucionBrowser
 
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/favorites.xaml?name=" + textBox1.Text + "&uri=" + textBox2.Text, UriKind.Relative));
+            if (textBox1.Text == "") 
+            {
+                MessageBox.Show(Cadenas.NoEmpty);
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/favorites.xaml?name=" + textBox1.Text + "&uri=" + textBox2.Text, UriKind.Relative));
+            }
         }
 
         private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)

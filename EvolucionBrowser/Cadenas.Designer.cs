@@ -250,6 +250,15 @@ namespace EvolucionBrowser {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The name textbox can&apos;t be empty.
+        /// </summary>
+        public static string NoEmpty {
+            get {
+                return ResourceManager.GetString("NoEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Other Apps.
         /// </summary>
         public static string Other {

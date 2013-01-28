@@ -277,6 +277,9 @@
     <value>Compra la aplicación</value>
   </data>
   <data name="BuyMsg" xml:space="preserve">
-    <value>Compra la aplicación para optener una experiencia completa y sin anuncios . Decea comprar la aplicación?</value>
+    <value>Compra la aplicación para optener una experiencia completa y sin anuncios . Desea comprar la aplicación?</value>
+  </data>
+  <data name="NoEmpty" xml:space="preserve">
+    <value>El textbox Nombre no puede estar vacío</value>
   </data>
 </root>

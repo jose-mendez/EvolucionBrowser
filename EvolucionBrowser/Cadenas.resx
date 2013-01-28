@@ -278,4 +278,7 @@
   <data name="BuyApp" xml:space="preserve">
     <value>Buy this App</value>
   </data>
+  <data name="NoEmpty" xml:space="preserve">
+    <value>The name textbox can't be empty</value>
+  </data>
 </root>
