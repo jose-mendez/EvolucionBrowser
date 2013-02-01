@@ -1104,6 +1104,8 @@ namespace EvolucionBrowser
             {
 
                 QuitFullScreen();
+                e.Cancel = true;  // This prevents the default functionality of the back button.
+                return;
             }
             else
             {
@@ -1162,7 +1164,7 @@ namespace EvolucionBrowser
                 }
             }
 
-            e.Cancel = true;  // This prevents the default functionality of the back button.
+           // e.Cancel = true;  // This prevents the default functionality of the back button.
         }
 
 
