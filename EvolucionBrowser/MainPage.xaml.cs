@@ -833,15 +833,22 @@ namespace EvolucionBrowser
                 btNext1.Margin = new Thickness(550, 0, 0, 0);
                 btBack1.Margin = new Thickness(485, 0, 0, 0);
                 Fullscreen.Margin = new Thickness(420, 0, 0, 0);
+
+                webBrowser1.Width = double.NaN;
+                webBrowser2.Width = double.NaN;
+                webBrowser3.Width = double.NaN;
+                webBrowser4.Width = double.NaN;
             }
             else 
             {
                 btNext1.Margin = new Thickness(381, 0, 0, 0);
                 btBack1.Margin = new Thickness(317, 0, 0, 0);
                 Fullscreen.Margin = new Thickness(247, 0, 0, 0);
+
+               
             }
 
-             //MessageBox.Show(grid1.Width.ToString());
+             
 
         }
 
