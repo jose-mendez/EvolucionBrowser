@@ -56,13 +56,18 @@ namespace EvolucionBrowser
             base.OnNavigatedTo(e);
 
             if ((Application.Current as App).IsTrial)
-            { 
-                ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).IsEnabled = true;
-                if (MessageBox.Show(Cadenas.BuyMsg, Cadenas.BuyCaption,
-                 MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                if ((Application.Current as App).is_count_license == true)
                 {
-                    _marketPlaceDetailTask.Show();
+                    ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).IsEnabled = true;
+                    if (MessageBox.Show(Cadenas.BuyMsg, Cadenas.BuyCaption,
+                     MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    {
+                        _marketPlaceDetailTask.Show();
+                    }
+                    (Application.Current as App).is_count_license = false;
                 }
+
                 webBrowser1.Margin = new Thickness(-4, 70, 14, 80);
                 webBrowser2.Margin = new Thickness(-4, 70, 14, 80);
                 webBrowser3.Margin = new Thickness(-4, 70, 14, 80);
@@ -250,8 +255,8 @@ namespace EvolucionBrowser
             {
                 if (!Regex.IsMatch(uri.Text, "^(http://|/)") && !Regex.IsMatch(uri.Text, "^(https://|/)"))
                 {
-                    toSearch = uri.Text;
-                    uri.Text = "http://" + uri.Text;
+                    toSearch = HttpUtility.UrlEncode(uri.Text);
+                    uri.Text = "http://" + uri.Text.Replace(" ", "");
                 }
 
                 try
@@ -265,7 +270,7 @@ namespace EvolucionBrowser
             }
             else
             {
-               MessageBox.Show("You must enter an address");
+                MessageBox.Show(Cadenas.invalid_addr);
             }
         }
 
@@ -1382,7 +1387,7 @@ namespace EvolucionBrowser
                     else if (pivot1.SelectedIndex == 2)
                     {
 
-                        textBox3.Text = seng + toSearch;
+                        textBox3.Text = seng + HttpUtility.UrlEncode(toSearch);
                         this.Dispatcher.BeginInvoke(() =>
                         {
                             webBrowser3.Navigate(new Uri(seng + toSearch, UriKind.Absolute));

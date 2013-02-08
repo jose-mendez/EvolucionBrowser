@@ -281,4 +281,7 @@
   <data name="NoEmpty" xml:space="preserve">
     <value>The name textbox can't be empty</value>
   </data>
+  <data name="invalid_addr" xml:space="preserve">
+    <value>You must enter a valid address</value>
+  </data>
 </root>

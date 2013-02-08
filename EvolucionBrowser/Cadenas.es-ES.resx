@@ -282,4 +282,7 @@
   <data name="NoEmpty" xml:space="preserve">
     <value>El textbox Nombre no puede estar vacío</value>
   </data>
+  <data name="invalid_addr" xml:space="preserve">
+    <value>Debe entrar una dirección válida</value>
+  </data>
 </root>

@@ -281,4 +281,7 @@
   <data name="NoEmpty" xml:space="preserve">
     <value>Le nom ne peut pas être zone de texte vide</value>
   </data>
+  <data name="invalid_addr" xml:space="preserve">
+    <value>Vous devez entrer une adresse valide</value>
+  </data>
 </root>

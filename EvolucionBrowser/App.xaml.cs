@@ -103,7 +103,7 @@ namespace EvolucionBrowser
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            checkLicense();
+           checkLicense();
             try
             {
                 using (evolucionBrowserDataContext context = new evolucionBrowserDataContext(ConnectionString))
@@ -141,9 +141,12 @@ namespace EvolucionBrowser
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
+        public bool is_count_license = true;
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            checkLicense();
+            
+                checkLicense();
+                
         }
 
         // Code to execute when the application is deactivated (sent to background)

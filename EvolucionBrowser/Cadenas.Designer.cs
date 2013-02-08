@@ -241,6 +241,15 @@ namespace EvolucionBrowser {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a valid address.
+        /// </summary>
+        public static string invalid_addr {
+            get {
+                return ResourceManager.GetString("invalid_addr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mozilla Mobile.
         /// </summary>
         public static string MozillaMobile {
